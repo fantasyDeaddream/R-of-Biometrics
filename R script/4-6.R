@@ -1,0 +1,35 @@
+#例4-6
+#未提供样本点，使用公式正常计算(总体方差已知，使用u检验，提供的是σ^2,且n1或n2≤30)
+#两组样本大小
+n1=25
+n2=30
+#两组样本均值
+mu1=3.71
+mu2=3.46
+#两组样本方差
+var1=0.46
+var2=0.37
+#显著水平α(双边先÷2)
+alpha=0.975
+#零假设结果
+mu=qnorm(alpha)
+print("mu=")
+print(mu)
+#两组样本的方差
+dealtVar=sqrt(var1/n1+var2/n2)
+print("dealtVar=")
+print(dealtVar)
+#两组样本的u统计量
+u=(mu1-mu2)/dealtVar
+print("u=")
+print(u)
+#统计结果
+if(!(abs(u)>mu))
+{
+  print("接受H0:u1=u2，拒绝H1:u1≠u2")
+  print("两个样本无显著区别")
+}else
+{
+  print("拒绝H0:u1=u2，接受H1:u1≠u2")
+  print("两个样本存在显著区别")
+}

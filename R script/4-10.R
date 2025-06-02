@@ -1,0 +1,45 @@
+#例4-10
+#未提供样本点，使用公式正常计算(总体方差未知，提供的是样本方差s^2和样本均值,使用t检验)
+#两组样本大小
+n1=10
+n2=5
+#两组样本均值
+mu1=14.3
+mu2=11.7
+#两组样本方差
+var1=1.621
+var2=0.135
+#平均化处理
+var1real=var1/n1
+var2real=var2/n2
+#两组样本的R统计量
+R=var1real/(var1real+var2real)
+print("R=")
+print(R)
+#两组样本的R统计量
+df=1/(R^2/(n1-1)+(1-R)^2/(n2-1))
+print("df=")
+print(df)
+ndf=round(df)
+#显著水平α(双边先÷2)
+alpha=0.995
+#t值表结果
+tReal=qt(alpha,ndf)
+print("tReal=")
+print(tReal)
+#两组样本的方差
+dealtVar=sqrt(var1/n1+var2/n2)
+print("dealtVar=")
+print(dealtVar)
+#两组样本的t统计量
+t=(mu1-mu2)/dealtVar
+print("t=")
+print(t)
+#统计结果
+if(!(abs(t)>tReal))
+{
+  print("接受H0:u1=u2，拒绝H1:u1≠u2")
+  print("两个样本无显著区别")
+}else{
+  print("拒绝H0:u1=u2，接受H1:u1≠u2")
+  print("两个样本存在显著区别")}
